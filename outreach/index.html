@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Karahan Studio — Internal Outreach Playbook</title>
+<meta name="robots" content="noindex,nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --ink: #1a1a1f;
+    --ink-2: #4a4a55;
+    --ink-3: #8a8a95;
+    --accent: #b8895a;
+    --accent-2: #9a6e42;
+    --accent-soft: #f4ecdf;
+    --border: #e8e3d8;
+    --code-bg: #f1ede4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+  @media (max-width: 900px) { .page { grid-template-columns: 1fr; } }
+
+  /* Sidebar */
+  aside {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  }
+  @media (max-width: 900px) { aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--border); } }
+  .brand {
+    font-family: 'Fraunces', serif; font-size: 18px;
+    margin-bottom: 0.25rem; color: var(--ink);
+  }
+  .brand-sub {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--accent); margin-bottom: 2rem; font-weight: 500;
+  }
+  .toc { display: flex; flex-direction: column; gap: 4px; }
+  .toc-section {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--ink-3); margin: 1.5rem 0 0.5rem; font-weight: 500;
+  }
+  .toc-section:first-child { margin-top: 0; }
+  .toc a {
+    display: block; padding: 6px 12px; border-radius: 6px;
+    color: var(--ink-2); text-decoration: none; font-size: 14px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .toc a:hover { background: var(--accent-soft); color: var(--accent-2); }
+
+  .warning {
+    margin-top: 2rem; padding: 12px 14px;
+    background: #fef3c7; border: 1px solid #fcd34d;
+    border-radius: 8px; font-size: 12px; color: #78350f;
+    line-height: 1.5;
+  }
+
+  /* Main */
+  main { padding: 4rem 4rem 6rem; max-width: 880px; }
+  @media (max-width: 900px) { main { padding: 2rem 1.5rem 4rem; } }
+
+  h1 {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: clamp(32px, 4vw, 48px); line-height: 1.1;
+    letter-spacing: -0.02em; margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: clamp(24px, 3vw, 32px); line-height: 1.2;
+    letter-spacing: -0.015em; margin: 3.5rem 0 1rem;
+    padding-top: 1.5rem; border-top: 1px solid var(--border);
+    scroll-margin-top: 2rem;
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  h3 {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: 21px; line-height: 1.3;
+    margin: 2rem 0 0.75rem;
+    scroll-margin-top: 2rem;
+  }
+  h4 {
+    font-size: 14px; font-weight: 600;
+    margin: 1.5rem 0 0.5rem;
+    color: var(--ink-2);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  p { margin-bottom: 1rem; color: var(--ink-2); font-size: 16px; }
+  p strong { color: var(--ink); font-weight: 600; }
+  a { color: var(--accent-2); }
+
+  ul, ol { margin: 0 0 1.25rem 1.25rem; }
+  li { margin-bottom: 0.4rem; color: var(--ink-2); font-size: 16px; }
+  li strong { color: var(--ink); font-weight: 600; }
+
+  hr {
+    border: none; border-top: 1px solid var(--border);
+    margin: 3rem 0;
+  }
+
+  /* Code & callouts */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em; background: var(--code-bg);
+    padding: 2px 6px; border-radius: 4px; color: var(--accent-2);
+  }
+  pre, .template {
+    font-family: 'Inter', sans-serif;
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 1.25rem 1.5rem; border-radius: 8px;
+    margin: 1.25rem 0; white-space: pre-wrap;
+    font-size: 14px; line-height: 1.7; color: var(--ink-2);
+    position: relative;
+  }
+  .template { padding-top: 2rem; }
+  .template-label {
+    position: absolute; top: 8px; left: 1.5rem;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--accent); font-weight: 500;
+  }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    margin: 1rem 0;
+    color: var(--ink-2); font-style: italic;
+    background: var(--accent-soft);
+    border-radius: 0 6px 6px 0;
+  }
+  blockquote p { margin-bottom: 0.5rem; }
+  blockquote p:last-child { margin-bottom: 0; }
+
+  /* Tables */
+  table {
+    width: 100%; border-collapse: collapse;
+    margin: 1.5rem 0; font-size: 14px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 10px 14px; text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th { background: var(--accent-soft); color: var(--accent-2); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { color: var(--ink-2); }
+  tr:last-child td { border-bottom: none; }
+
+  .lead {
+    font-size: 18px; color: var(--ink-2);
+    margin-bottom: 2rem; padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--accent-soft); color: var(--accent-2);
+    font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 999px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .tab-buttons {
+    display: flex; gap: 4px; margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .tab-btn {
+    background: transparent; border: none; cursor: pointer;
+    padding: 12px 20px; font-family: inherit; font-size: 14px;
+    color: var(--ink-3); font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    margin-bottom: -1px;
+  }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active { color: var(--accent-2); border-bottom-color: var(--accent); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Tip / callout boxes */
+  .tip {
+    background: var(--accent-soft); border-left: 3px solid var(--accent);
+    padding: 1rem 1.25rem; border-radius: 0 8px 8px 0;
+    margin: 1.5rem 0; font-size: 15px;
+  }
+  .tip strong { color: var(--accent-2); }
+
+  /* Print */
+  @media print {
+    aside, .tab-buttons { display: none; }
+    .page { display: block; }
+    .tab-content { display: block !important; }
+    main { padding: 0; max-width: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<aside>
+  <div class="brand">karahan·studio</div>
+  <div class="brand-sub">Internal Playbook</div>
+
+  <nav class="toc">
+    <div class="toc-section">Tabs</div>
+    <a href="#tab-playbook" data-tab="playbook">📕 Playbook</a>
+    <a href="#tab-templates" data-tab="templates">📋 Templates</a>
+    <a href="#tab-loom" data-tab="loom">🎥 Loom Script</a>
+
+    <div class="toc-section">Playbook sections</div>
+    <a href="#who">Who we target</a>
+    <a href="#find">How to find prospects</a>
+    <a href="#qualify">Qualification scorecard</a>
+    <a href="#cadence">The cadence</a>
+    <a href="#dm">DM template</a>
+    <a href="#email">Email templates</a>
+    <a href="#discovery">Discovery call</a>
+    <a href="#objections">Objections</a>
+    <a href="#pricing">Pricing tree</a>
+    <a href="#tracking">Tracking</a>
+    <a href="#90-day">90-day plan</a>
+  </nav>
+
+  <div class="warning">
+    <strong>Internal use only.</strong> This is a noindex'd page intended for the studio. Don't share these templates verbatim publicly — pricing leverage drops if everyone uses them.
+  </div>
+</aside>
+
+<main>
+  <div class="tab-buttons">
+    <button class="tab-btn active" data-tab="playbook">Playbook</button>
+    <button class="tab-btn" data-tab="templates">Templates</button>
+    <button class="tab-btn" data-tab="loom">Loom Script</button>
+  </div>
+
+  <!-- ======================= PLAYBOOK ======================= -->
+  <div class="tab-content active" id="tab-playbook">
+
+  <div class="badge">90-Day Playbook</div>
+  <h1>Outreach playbook</h1>
+  <p class="lead">The rest of this folder is templates. Read this first. It's the only thing here that matters more than a 10x improvement in any single template.</p>
+
+  <h2 id="who">Who we're targeting</h2>
+  <p><strong>Med-spa / aesthetic clinic owners in major US metros.</strong> Not surgeons (different sales cycle, more compliance). Not derms (already have agencies). Not chains (committee buyers).</p>
+  <p>The sweet spot:</p>
+  <ul>
+    <li><strong>1–2 locations</strong> — single decision-maker</li>
+    <li><strong>$1M–$5M annual revenue</strong> — can afford $5–8k easily, not big enough for in-house</li>
+    <li><strong>Active Instagram</strong> — proves they care about marketing, gives us a channel</li>
+    <li><strong>Current website is bad</strong> — outdated template, slow, ugly photos, broken booking</li>
+    <li><strong>Female-owned or female-led</strong> statistically converts better in this niche (industry skews 70%+ female practitioners)</li>
+  </ul>
+
+  <h3>Best metros to start</h3>
+  <ol>
+    <li><strong>Austin, TX</strong> — booming, less saturated than CA, friendly to outsiders</li>
+    <li><strong>Scottsdale / Phoenix, AZ</strong> — wealth, lots of med-spas, online-savvy</li>
+    <li><strong>Nashville, TN</strong> — fast-growing, high disposable income, less agency competition</li>
+    <li><strong>Charlotte / Raleigh, NC</strong> — same pattern, even less competition</li>
+    <li><strong>Tampa / Miami, FL</strong> — saturated but huge volume, image-conscious buyers</li>
+  </ol>
+  <div class="tip"><strong>Skip on day one:</strong> Beverly Hills, Manhattan, San Francisco. Too saturated, too cynical, too many local agencies. Earn the right to pitch them later.</div>
+
+  <h2 id="find">How to find prospects</h2>
+
+  <h3>Method 1: Google Maps + Instagram (primary)</h3>
+  <ol>
+    <li>Search Google Maps: <em>"med spa Austin"</em>, <em>"medical aesthetics Scottsdale"</em>, <em>"injector clinic Nashville"</em>.</li>
+    <li>Sort by 4.5+ stars and 50+ reviews (proves they have customers).</li>
+    <li>Click each → open their website → take 5 seconds to judge.
+      <ul>
+        <li><strong>Auto-skip:</strong> Squarespace 2018 template, broken booking, no Instagram link.</li>
+        <li><strong>Auto-skip:</strong> Already obviously hired a great agency (Saatchi-tier work).</li>
+        <li><strong>Target:</strong> Looks DIY, slow load, generic stock photos, before/after gallery is a mess, no clear pricing, no clear practitioner story.</li>
+      </ul>
+    </li>
+    <li>Open their Instagram → check if they post 2+ times per week.</li>
+    <li>Add to call/email tracker as a row.</li>
+  </ol>
+  <p><strong>Realistic pace:</strong> 30 minutes per metro = 15-25 qualified leads. Build a list of 100 before sending anything.</p>
+
+  <h3>Method 2: Yelp top-rated lists</h3>
+  <p>Yelp's <em>"Best Med Spas in [City]"</em> page already does the qualification work. Skim, skip the chains, target single-location independents.</p>
+
+  <h3>Method 3: Instagram hashtag mining</h3>
+  <p>Search <code>#medspa[city]</code>, <code>#aesthetics[city]</code>, <code>#injector[city]</code>. Browse posts from the last 7 days. Practices that post original content (not reposts) are the targets.</p>
+
+  <h3>Method 4: "Ugly client of better practice" trick</h3>
+  <p>When you find a great-looking practice with an obvious agency, scroll their tagged photos. Other practices that interact with them in comments are often peer-network practices in adjacent cities — and their sites are usually worse.</p>
+
+  <h2 id="qualify">The qualification scorecard</h2>
+  <p>Before reaching out, score each prospect 1–5 on each axis. Skip anyone under 18 / 25.</p>
+  <table>
+    <thead><tr><th>Axis</th><th>1 (skip)</th><th>5 (target)</th></tr></thead>
+    <tbody>
+      <tr><td>Current site quality</td><td>Looks great</td><td>Looks like 2014</td></tr>
+      <tr><td>Instagram activity</td><td>Dead</td><td>Multiple posts/week, real content</td></tr>
+      <tr><td>Reviews</td><td>&lt;20 reviews</td><td>100+ reviews, 4.7+</td></tr>
+      <tr><td>Practitioner-led story</td><td>Generic</td><td>Owner is the brand</td></tr>
+      <tr><td>Visible spend on marketing</td><td>None</td><td>Ads, photographer, branding effort</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="cadence">The cadence</h2>
+  <p>Pick <strong>one channel per week</strong> and run it for 4 weeks before judging. Don't multi-channel before you understand what works.</p>
+  <ul>
+    <li><strong>Week 1–2: Instagram DMs.</strong> 10–15 DMs/day. Five minutes each, including custom personalization. Reply rate target: 15–25%. Anything below 10%, your message is wrong.</li>
+    <li><strong>Week 3–4: Email.</strong> Add the email follow-up sequence (3 touches, 4 days apart) to anyone who didn't reply on IG. Email reply rate is lower (3–8%) but opens up serious buyers.</li>
+    <li><strong>Week 5+: Add LinkedIn</strong> for medical directors / owners. Slower but high-trust. Connect first, message after they accept.</li>
+  </ul>
+
+  <h3>Daily rhythm</h3>
+  <ul>
+    <li><strong>Morning (1h):</strong> prospect 20 new leads, DM 10 fresh leads.</li>
+    <li><strong>Afternoon (45min):</strong> follow-ups + replies.</li>
+    <li><strong>Evening (15min):</strong> update tracker, prep tomorrow's list.</li>
+  </ul>
+  <p>That's it. Don't try to also build, also TikTok, also DM all your time. Outreach is the lever; protect the time.</p>
+
+  <h2 id="dm">The DM template (Instagram)</h2>
+  <div class="template">
+    <div class="template-label">Cold DM · IG</div>
+Hey [first name] — Karahan Studio here, I design websites for med-spas.
+
+Just spent 10 minutes on [practice name]'s site and saw three small things probably costing you booked consults right now. Sent you a 90-second Loom video walking through them — no pitch, no obligation.
+
+[Loom link]
+
+If it's useful, I do new sites for practices like yours start to finish in 14 days at $5k flat. If not, take the suggestions and run them past whoever built your current site.</div>
+
+  <h3>Why this works</h3>
+  <ul>
+    <li><strong>Specific</strong> ("med-spas," not "small businesses")</li>
+    <li><strong>Real value first</strong> — the Loom is genuine, not a pitch</li>
+    <li><strong>Casual</strong> — no "I hope this email finds you well" energy</li>
+    <li><strong>Soft close</strong> — price upfront, opt-out invited, low pressure</li>
+  </ul>
+
+  <h3>Building the Loom (essential — don't skip)</h3>
+  <p>Record a 60–90 second Loom screen recording for each prospect. Show:</p>
+  <ol>
+    <li><em>"Here's your homepage. The first thing I noticed is..."</em> (point at one specific issue)</li>
+    <li><em>"And on mobile, your booking button is below the fold — that's costing you maybe 20–30% of mobile bookings."</em></li>
+    <li><em>"Two more small things I'd fix on your services page if you want, happy to chat."</em></li>
+  </ol>
+  <p>Personalization is the entire job. Generic Looms get ignored. Specific Looms get replies.</p>
+
+  <h2 id="email">The email template (3-touch sequence)</h2>
+
+  <h3>Email 1 — Day 0</h3>
+  <div class="template">
+    <div class="template-label">Subject: Quick site note for [practice name]</div>
+Hi [first name],
+
+I run Karahan Studio (karahanstudio.com) — I design websites for US med-spas and aesthetic clinics. Was researching [city] practices and your reviews caught my eye, so I poked around your site.
+
+Three things I'd change to recover what's likely 20–40% more booked consultations from your current traffic:
+
+1. [Specific issue 1 — e.g. mobile load time]
+2. [Specific issue 2 — e.g. CTA placement]
+3. [Specific issue 3 — e.g. before/after gallery format]
+
+Even if we never work together, fix these three. They're free leverage.
+
+If you do want a redesign, my work for similar practices is at karahanstudio.com. Fixed price ($5k), 14 days start to launch, single point of contact (me).
+
+Worth a quick call?
+
+— Justin</div>
+
+  <h3>Email 2 — Day 4</h3>
+  <div class="template">
+    <div class="template-label">Subject: Re: Quick site note for [practice name]</div>
+Hi [first name] — bumping this in case it got buried.
+
+Also wanted to add: I just looked at [name a competitor in same city]'s site and what they're doing well at the top of their homepage is [specific thing]. You could implement the same thing in an afternoon.
+
+Let me know if you'd like me to send the full audit (15 min, on me).
+
+— Justin</div>
+
+  <h3>Email 3 — Day 9</h3>
+  <div class="template">
+    <div class="template-label">Subject: Last note — [practice name]</div>
+Hi [first name], won't keep poking. Last thing:
+
+I'm taking 2 new med-spa projects in [month]. Builds I take in the next month will launch before [busy season — e.g. summer / Q4]. After that, slots are 6–8 weeks out.
+
+If timing's wrong, no worries. Saved your contact for when it isn't.
+
+— Justin</div>
+
+  <h2 id="discovery">The discovery call (20 min)</h2>
+  <p><strong>Goal:</strong> confirm fit and book a deeper call. <em>Not</em> to sell.</p>
+
+  <h3>Structure</h3>
+  <ul>
+    <li><strong>Min 0–2:</strong> Small talk. Where are you, weather, etc. Don't skip — Americans expect it.</li>
+    <li><strong>Min 2–6:</strong> Their story. <em>"How did you start the practice? What changed for you in the last year?"</em></li>
+    <li><strong>Min 6–12:</strong> Their goals. <em>"If we look at your business in 12 months and the website was actually pulling its weight, what would be different?"</em></li>
+    <li><strong>Min 12–17:</strong> The specific issues you found in their site. Be a doctor, not a salesperson.</li>
+    <li><strong>Min 17–19:</strong> Process and price. <em>"My standard is $5k, 14 days. Premium is $8k for X. I have 2 slots in [month]."</em></li>
+    <li><strong>Min 19–20:</strong> Soft close. <em>"Want to do a 45-min discovery next week to scope it properly? No pressure today."</em></li>
+  </ul>
+
+  <h3>Things to NOT do</h3>
+  <ul>
+    <li>Don't pitch features. Pitch outcomes.</li>
+    <li>Don't give a discount on the first call. <strong>Ever.</strong></li>
+    <li>Don't talk about yourself for more than 90 seconds total.</li>
+    <li>Don't promise rankings, traffic, or specific revenue lifts. Promise craft and process.</li>
+  </ul>
+
+  <h2 id="objections">Common objections + responses</h2>
+
+  <h4>"Why are you so much cheaper than [local agency]?"</h4>
+  <blockquote>"No project managers, no salespeople, no account executives. Cost of living in Germany is also lower than Austin. The hours of actual design and code are similar — the overhead isn't."</blockquote>
+
+  <h4>"What's the catch?"</h4>
+  <blockquote>"Honest answer: scope. I do five pages in two weeks. If you need 50 pages, a CMS for non-technical staff, or a custom CRM, that's a different project — usually 4x the price and I'll refer you to someone who specializes."</blockquote>
+
+  <h4>"Can you do it for $3k?"</h4>
+  <blockquote>"I can't, and you wouldn't actually want me to. The work is the work. If $5k isn't workable, I'd rather pass than half-do it."</blockquote>
+
+  <h4>"Can we pay in installments?"</h4>
+  <blockquote>"Yes — 50% to start, 50% on launch. That's the only structure I do. No 12-month payment plans."</blockquote>
+
+  <h4>"How do I know it'll be good?"</h4>
+  <blockquote>"Three live examples on karahanstudio.com. Talk to anyone whose site is on there. If you want a paid 1-day mini-engagement to see how I work before we commit to the full build, that's $750 and credited toward the project if you proceed."</blockquote>
+
+  <h4>"We already have someone we work with."</h4>
+  <blockquote>"Cool — keep them. If they ever drop the ball or get too busy, here's my email."</blockquote>
+  <p><em>(That last one closes more deals 6 months later than any aggressive pitch.)</em></p>
+
+  <h2 id="pricing">Pricing decision tree</h2>
+  <table>
+    <thead><tr><th>Situation</th><th>Tier</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Single location, ≤6 services</td><td>Standard ($5k)</td><td>Default offer</td></tr>
+      <tr><td>Single location, photography needed</td><td>Premium ($8k)</td><td>Up-sell on call when they show bad photos</td></tr>
+      <tr><td>2+ locations, provider profiles</td><td>Custom ($12k+)</td><td>Always quote, never list</td></tr>
+      <tr><td>Brand-new practice, opening soon</td><td>Standard</td><td>No discount; they have the most marketing budget right now</td></tr>
+      <tr><td>Established 10+ years, just need refresh</td><td>Standard</td><td>Anchor on the redesign not the rebuild</td></tr>
+    </tbody>
+  </table>
+  <div class="tip"><strong>Never list:</strong> discount, payment plan, "deal." Once you discount, you're an outsourced freelancer, not a studio.</div>
+
+  <h2 id="tracking">Tracking & metrics</h2>
+  <p>Use the email-tracker tool (or call-tracker for IG DMs) you already have. Per week, watch:</p>
+  <ul>
+    <li><strong>Touches sent</strong> — should hit 50–75/week</li>
+    <li><strong>Reply rate</strong> — target 15%+ on IG, 5%+ on email</li>
+    <li><strong>Discovery calls booked</strong> — target 5%+ of touches</li>
+    <li><strong>Closed deals</strong> — target 1 every 6–8 weeks at first, 1/week by month 4</li>
+  </ul>
+  <ul>
+    <li>If reply rate is &lt; 10%, message is wrong, don't add volume.</li>
+    <li>If reply rate is fine but no calls, your value-pitch is wrong.</li>
+    <li>If calls happen but no closes, your portfolio or pricing-confidence is wrong.</li>
+  </ul>
+
+  <h2 id="90-day">The 90-day plan</h2>
+  <table>
+    <thead><tr><th>Weeks</th><th>Goal</th></tr></thead>
+    <tbody>
+      <tr><td>1–2</td><td>Build prospect lists (300 leads across 4 metros). No outreach yet. Polish your portfolio site, record 10 sample Looms to practice.</td></tr>
+      <tr><td>3–4</td><td>Send 50 IG DMs/week with personalized Looms. Track replies. Refine the message based on what works.</td></tr>
+      <tr><td>5–6</td><td>Add email sequence to everyone who didn't reply on IG. First discovery calls.</td></tr>
+      <tr><td>7–8</td><td>First close (realistic). Adjust pricing if you closed too easily — that's a signal you're underpriced.</td></tr>
+      <tr><td>9–12</td><td>Sustained 1 close/month. Start asking past clients for testimonials and referrals immediately on launch.</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Realistic year-1 outcome at 50 quality touches/week:</strong> 6–10 closes. At $5k average: $30–50k. At $8k average: $50–80k.</p>
+
+  <h3>When to revisit this playbook</h3>
+  <ul>
+    <li>After 50 sent touches with no replies → message problem, rewrite</li>
+    <li>After 20 calls with no closes → pricing or proof problem</li>
+    <li>After 5 closes → raise prices 20%</li>
+    <li>After 10 closes → hire a part-time helper for prospecting, you do calls + design only</li>
+  </ul>
+
+  </div>
+
+  <!-- ======================= TEMPLATES ======================= -->
+  <div class="tab-content" id="tab-templates">
+
+  <div class="badge">Quick Reference</div>
+  <h1>Outreach templates</h1>
+  <p class="lead">Copy / paste. Read the Playbook tab for context on when each is used.</p>
+
+  <h2>Instagram DM (cold)</h2>
+  <div class="template">
+    <div class="template-label">Cold DM · IG</div>
+Hey [first name] — Karahan Studio here, I design websites for med-spas.
+
+Just spent 10 minutes on [practice name]'s site and saw three small things probably costing you booked consults right now. Sent you a 90-second Loom video walking through them — no pitch, no obligation.
+
+[Loom link]
+
+If it's useful, I do new sites for practices like yours start to finish in 14 days at $5k flat. If not, take the suggestions and run them past whoever built your current site.</div>
+
+  <h2>Instagram DM follow-up (no reply after 5 days)</h2>
+  <div class="template">
+    <div class="template-label">Bump · IG</div>
+Hey [first name] — bumping the Loom from last week in case it slipped past. Two of the things I flagged are quick fixes you could ship this afternoon. Lmk if useful, otherwise no worries.</div>
+
+  <h2>Email 1 — first touch (Day 0)</h2>
+  <div class="template">
+    <div class="template-label">Subject: Quick site note for [practice name]</div>
+Hi [first name],
+
+I run Karahan Studio (karahanstudio.com) — I design websites for US med-spas and aesthetic clinics. Was researching [city] practices and your reviews caught my eye, so I poked around your site.
+
+Three things I'd change to recover what's likely 20–40% more booked consultations from your current traffic:
+
+1. [Specific issue 1]
+2. [Specific issue 2]
+3. [Specific issue 3]
+
+Even if we never work together, fix these three. They're free leverage.
+
+If you do want a redesign, my work for similar practices is at karahanstudio.com. Fixed price ($5k), 14 days start to launch, single point of contact (me).
+
+Worth a quick call?
+
+— Justin</div>
+
+  <h2>Email 2 — Day 4 follow-up</h2>
+  <div class="template">
+    <div class="template-label">Subject: Re: Quick site note for [practice name]</div>
+Hi [first name] — bumping this in case it got buried.
+
+Also wanted to add: I just looked at [competitor in same city]'s site and what they're doing well at the top of their homepage is [specific thing]. You could implement the same thing in an afternoon.
+
+Let me know if you'd like me to send the full audit (15 min, on me).
+
+— Justin</div>
+
+  <h2>Email 3 — Day 9 final</h2>
+  <div class="template">
+    <div class="template-label">Subject: Last note — [practice name]</div>
+Hi [first name], won't keep poking. Last thing:
+
+I'm taking 2 new med-spa projects in [month]. Builds I take in the next month will launch before [busy season]. After that, slots are 6–8 weeks out.
+
+If timing's wrong, no worries. Saved your contact for when it isn't.
+
+— Justin</div>
+
+  <hr/>
+
+  <h2>Reply scripts</h2>
+
+  <h3>When they reply "interested, send more info"</h3>
+  <div class="template">
+    <div class="template-label">Reply · Interested</div>
+Awesome — happy to. Three things would help me prep something useful:
+
+1. What's the #1 thing you wish your site did better right now?
+2. Any sites you love (yours or competitors)? Helps me calibrate.
+3. Booking platform? (Vagaro / Boulevard / Mindbody / other)
+
+Or — fastest way is a 20-min call. I can do [tomorrow 11am ET] or [Wed 2pm ET]. Either work?</div>
+
+  <h3>When they reply "what does it include?"</h3>
+  <div class="template">
+    <div class="template-label">Reply · Scope question</div>
+Standard build (most common):
+- Custom design, no template
+- 5 pages: home + about + services overview + 2–3 service detail pages
+- Booking integration with whatever you use now
+- Mobile-first, fast (90+ Lighthouse)
+- Basic on-page SEO
+- 30 days free post-launch tweaks
+
+$5,000 flat. 50% to start, 50% on launch. 14 days from kickoff.
+
+If you need photography direction, treatment-specific landing pages, or multi-location, I'd recommend the Premium tier ($8k). Walk you through both on a call?</div>
+
+  <h3>When they reply "send me a proposal"</h3>
+  <div class="template">
+    <div class="template-label">Reply · Proposal request</div>
+For a 5-page med-spa build I don't do formal proposals — the offer is on karahanstudio.com/#pricing and the price is fixed.
+
+If we get on a 20-min call I can confirm scope is right for your practice and send a 1-page agreement same day if you want to move forward. Want to grab a slot?
+
+[Calendly / scheduling link]</div>
+
+  <h3>When they ghost after a discovery call</h3>
+  <div class="template">
+    <div class="template-label">Reply · Ghost recovery</div>
+Hey [first name] — circling back on our chat from [day]. No pressure either way, just wanted to check whether the project is still on the table for [month] or if I should reach back out later in the year.</div>
+
+  <hr/>
+
+  <h2>Voice for all of this</h2>
+  <ul>
+    <li>Short sentences. Active voice.</li>
+    <li>One ask per message.</li>
+    <li>No "I hope this finds you well" / "circling back to circle back" / "synergies"</li>
+    <li>Their name once, your name once. No more.</li>
+    <li>If you wouldn't say it out loud over coffee, don't write it.</li>
+  </ul>
+
+  </div>
+
+  <!-- ======================= LOOM ======================= -->
+  <div class="tab-content" id="tab-loom">
+
+  <div class="badge">Highest leverage thing in the funnel</div>
+  <h1>The 90-second Loom audit</h1>
+  <p class="lead">The single highest-leverage thing in the entire outreach. Generic Looms get ignored. Specific Looms book calls.</p>
+
+  <h2>Recording setup</h2>
+  <ul>
+    <li><strong>Tool:</strong> Loom (free tier — 5 min limit, you'll use 90 sec)</li>
+    <li><strong>Camera:</strong> On. Bottom-right circle. They need to see your face.</li>
+    <li><strong>Mic:</strong> Built-in laptop is fine. Don't over-engineer.</li>
+    <li><strong>Background:</strong> Anything that isn't a messy bed. A wall or bookshelf is enough.</li>
+    <li><strong>Volume:</strong> Aim for "casual confident." Not radio voice.</li>
+  </ul>
+
+  <h2>The 90-second structure</h2>
+
+  <h3>Seconds 0–10 — Personalization hook</h3>
+  <blockquote>"Hey [first name], Justin here from Karahan Studio. Spent ten minutes on [practice name]'s site this morning. Wanted to share three quick things I'd change."</blockquote>
+  <p><em>(Show their homepage on screen.)</em></p>
+
+  <h3>Seconds 10–35 — Issue 1 (the biggest)</h3>
+  <p>Always something on the homepage above the fold. Common ones: weak headline, hidden booking CTA, slow load, ugly hero photo.</p>
+  <blockquote>"First thing — your hero is doing two jobs at once. It says what you do <em>and</em> tries to sell every service. Pick one. The clinics whose sites convert best lead with one outcome — 'natural-looking lip filler' or 'aesthetic care without the upsell' — not a service menu."</blockquote>
+
+  <h3>Seconds 35–60 — Issue 2 (mobile or speed)</h3>
+  <p>Open it on mobile mid-recording.</p>
+  <blockquote>"Second — I'm pulling this up on mobile. Your booking button is below the fold here. People scroll for maybe two seconds before bouncing. Moving it to the very top corner usually adds 15–25% mobile bookings without any other change."</blockquote>
+
+  <h3>Seconds 60–80 — Issue 3 (specific to their content)</h3>
+  <p>Comment on their before/after gallery, or service page format, or a testimonial.</p>
+  <blockquote>"Third — your before/after gallery is a Google Drive link. People won't click. Even just six embedded images on the homepage with a small caption beats a gallery they have to leave the site to see."</blockquote>
+
+  <h3>Seconds 80–90 — Soft close</h3>
+  <blockquote>"These are free fixes — your current developer can do them in a half day. If you want a full redesign at some point, what I do is at karahanstudio.com. Either way, these three are worth doing this week. Take care."</blockquote>
+
+  <hr/>
+
+  <h2>What NOT to do</h2>
+  <ul>
+    <li>Don't say "agency", "synergies", "leverage", "full-service"</li>
+    <li>Don't go over 90 seconds — they'll close it at 1:30</li>
+    <li>Don't pitch in the first 60 seconds — looks salesy</li>
+    <li>Don't apologize ("sorry to bother you", "I know you're busy")</li>
+    <li>Don't use their first name more than twice</li>
+    <li>Don't read from a script visibly. Practice the structure, talk natural.</li>
+  </ul>
+
+  <h2>What to ALWAYS do</h2>
+  <ul>
+    <li>Use their actual practice name and a specific detail from their site</li>
+    <li>Show their site on screen the entire time</li>
+    <li>End with a real, free recommendation (not "DM me")</li>
+    <li>Smile briefly at the start and end. Camera reads it.</li>
+    <li>Send within 24h of recording — they expect freshness</li>
+  </ul>
+
+  <h2>Volume target</h2>
+  <p>10 Looms per day = 50/week = ~10 first calls/month at 20% reply, 50% call-to-DM rate.</p>
+  <p>Recording one takes 4–5 minutes once you find your rhythm. The whole pipeline:</p>
+  <ul>
+    <li>5 min site audit</li>
+    <li>90 sec recording</li>
+    <li>30 sec sending it via DM/email</li>
+    <li><strong>= ~7 min per touch</strong></li>
+  </ul>
+  <p>10/day = ~70 minutes. That's the work.</p>
+
+  </div>
+
+</main>
+
+</div>
+
+<script>
+  // Tab switching
+  const buttons = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+  function activate(name) {
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+    contents.forEach(c => c.classList.toggle('active', c.id === 'tab-' + name));
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  buttons.forEach(btn => btn.addEventListener('click', () => activate(btn.dataset.tab)));
+  document.querySelectorAll('.toc a[data-tab]').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); activate(a.dataset.tab); });
+  });
+</script>
+
+</body>
+</html>
