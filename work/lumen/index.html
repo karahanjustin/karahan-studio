@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lumen Wellness Studio — Skin, body, and breath. In one place.</title>
+<meta name="description" content="A modern wellness membership in Scottsdale. Aesthetics, massage, IV, and breathwork — under one roof." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f7f1e8;
+    --bg-2: #efe5d3;
+    --surface: #ffffff;
+    --ink: #2d211a;
+    --ink-2: #5a4a3f;
+    --ink-3: #8a7a6e;
+    --terra: #b85932;
+    --terra-2: #9a4825;
+    --terra-soft: #f5e0d4;
+    --olive: #756c4d;
+    --border: #e3d6c3;
+    --border-2: #cdb89c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+  .display { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(247, 241, 232, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 26px; letter-spacing: -0.01em; }
+  .logo i { font-style: italic; color: var(--terra); }
+  .nav-links { display: flex; gap: 2rem; font-size: 14px; color: var(--ink-2); font-weight: 500; }
+  .nav-links a:hover { color: var(--terra); }
+  .nav-cta {
+    padding: 11px 24px; background: var(--terra); color: var(--bg);
+    border-radius: 999px; font-size: 14px; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--terra-2); }
+  @media (max-width: 760px) { .nav-links { display: none; } }
+
+  /* Hero */
+  .hero {
+    padding: 5rem 0 3rem;
+  }
+  .hero-content { max-width: 920px; margin: 0 auto; text-align: center; }
+  .badge {
+    display: inline-block;
+    background: var(--terra-soft); color: var(--terra-2);
+    padding: 6px 16px; border-radius: 999px;
+    font-size: 13px; font-weight: 500;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 1.0; letter-spacing: -0.025em;
+    margin-bottom: 1.75rem;
+    font-weight: 400;
+  }
+  h1 i { font-style: italic; color: var(--terra); }
+  .hero-sub { font-size: 19px; color: var(--ink-2); max-width: 600px; margin: 0 auto 2.5rem; }
+  .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; border-radius: 999px;
+    font-size: 14px; font-weight: 500;
+    transition: all 0.2s; cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .btn-terra { background: var(--terra); color: var(--bg); }
+  .btn-terra:hover { background: var(--terra-2); transform: translateY(-1px); }
+  .btn-line { background: transparent; color: var(--ink); border-color: var(--border-2); }
+  .btn-line:hover { background: var(--bg-2); }
+  .arrow { transition: transform 0.2s; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* Hero collage */
+  .hero-collage {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px; margin-top: 4rem;
+  }
+  @media (max-width: 720px) { .hero-collage { grid-template-columns: 1fr 1fr; } }
+  .hero-collage div {
+    aspect-ratio: 3/4; border-radius: 14px; overflow: hidden;
+    background-size: cover; background-position: center;
+  }
+  .hero-collage div:nth-child(1) { background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=85'); }
+  .hero-collage div:nth-child(2) { background-image: url('https://images.unsplash.com/photo-1583416750470-965b2707b355?w=600&q=85'); margin-top: 32px; }
+  .hero-collage div:nth-child(3) { background-image: url('https://images.unsplash.com/photo-1591343395082-e120087004b4?w=600&q=85'); }
+  .hero-collage div:nth-child(4) { background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&q=85'); margin-top: 32px; }
+  @media (max-width: 720px) {
+    .hero-collage div:nth-child(2),
+    .hero-collage div:nth-child(4) { margin-top: 16px; }
+  }
+
+  section { padding: 6rem 0; }
+  @media (max-width: 720px) { section { padding: 4rem 0; } }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; color: var(--terra);
+    font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--terra); }
+  .section-title {
+    font-family: 'DM Serif Display', serif; font-weight: 400;
+    font-size: clamp(36px, 4.5vw, 56px); line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 1.25rem; max-width: 760px;
+  }
+  .section-title i { font-style: italic; color: var(--terra); }
+  .section-sub { color: var(--ink-2); font-size: 17px; max-width: 580px; margin-bottom: 3.5rem; }
+
+  /* Services categories */
+  .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  @media (max-width: 900px) { .cat-grid { grid-template-columns: 1fr 1fr; } }
+  .cat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .cat-card:hover { border-color: var(--terra); transform: translateY(-3px); }
+  .cat-glyph {
+    display: inline-block;
+    font-family: 'DM Serif Display', serif; font-style: italic;
+    font-size: 36px; color: var(--terra);
+    margin-bottom: 1rem;
+  }
+  .cat-name { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 0.5rem; }
+  .cat-list { list-style: none; padding: 0; }
+  .cat-list li {
+    padding: 0.5rem 0; font-size: 14px; color: var(--ink-2);
+    border-bottom: 1px dashed var(--border);
+  }
+  .cat-list li:last-child { border-bottom: none; }
+
+  /* Membership */
+  .membership {
+    background: linear-gradient(135deg, var(--terra) 0%, var(--terra-2) 100%);
+    color: var(--bg); border-radius: 28px;
+    padding: 5rem 4rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    align-items: center; position: relative; overflow: hidden;
+  }
+  .membership::before {
+    content: ''; position: absolute; top: -100px; right: -100px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  @media (max-width: 900px) { .membership { padding: 3rem 2rem; grid-template-columns: 1fr; gap: 2.5rem; } }
+  .membership .eyebrow { color: var(--terra-soft); }
+  .membership .eyebrow::before { background: var(--terra-soft); }
+  .membership h2 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(36px, 4.5vw, 56px); line-height: 1.05; margin-bottom: 1.25rem; }
+  .membership h2 i { font-style: italic; color: #ffd9c2; }
+  .membership p { color: rgba(247, 241, 232, 0.85); font-size: 17px; margin-bottom: 2rem; }
+  .member-perks { background: rgba(255,255,255,0.08); border-radius: 18px; padding: 2rem; backdrop-filter: blur(10px); }
+  .member-tier { font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.85; margin-bottom: 0.5rem; }
+  .member-price { font-family: 'DM Serif Display', serif; font-size: 56px; line-height: 1; margin-bottom: 0.25rem; }
+  .member-price small { font-size: 16px; opacity: 0.7; margin-left: 4px; }
+  .member-tagline { font-size: 14px; opacity: 0.85; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.18); }
+  .member-list { list-style: none; padding: 0; }
+  .member-list li { padding: 8px 0; font-size: 14px; display: flex; gap: 10px; }
+  .member-list li::before { content: '✦'; color: #ffd9c2; }
+
+  /* Team */
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  @media (max-width: 900px) { .team-grid { grid-template-columns: 1fr; } }
+  .team-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 18px; overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .team-card:hover { transform: translateY(-3px); border-color: var(--terra); }
+  .team-img { aspect-ratio: 4/5; background-size: cover; background-position: center; }
+  .team-img-1 { background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=85'); }
+  .team-img-2 { background-image: url('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=85'); }
+  .team-img-3 { background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=85'); }
+  .team-info { padding: 1.5rem; }
+  .team-role { font-size: 12px; color: var(--terra); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem; font-weight: 500; }
+  .team-name { font-family: 'DM Serif Display', serif; font-size: 24px; margin-bottom: 0.25rem; }
+  .team-bio { font-size: 14px; color: var(--ink-2); line-height: 1.65; }
+
+  /* Quote band */
+  .quote-band {
+    text-align: center; padding: 5rem 1rem;
+    background: var(--bg-2);
+  }
+  .quote-band blockquote {
+    font-family: 'DM Serif Display', serif; font-style: italic;
+    font-size: clamp(28px, 4vw, 44px); line-height: 1.3;
+    max-width: 840px; margin: 0 auto 1.5rem;
+    color: var(--ink);
+  }
+  .quote-band cite { font-style: normal; font-size: 13px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.12em; }
+
+  /* CTA */
+  .final-cta {
+    text-align: center; padding: 6rem 0;
+    background:
+      radial-gradient(700px 350px at 50% 0%, var(--terra-soft), transparent 70%);
+  }
+  .final-cta h2 { max-width: 700px; margin: 0 auto 1.25rem; }
+  .final-cta p { color: var(--ink-2); font-size: 17px; max-width: 480px; margin: 0 auto 2.5rem; }
+
+  /* Footer */
+  footer { padding: 3.5rem 0 2rem; border-top: 1px solid var(--border); color: var(--ink-3); font-size: 13px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+  @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer-col h4 { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--ink); margin-bottom: 1rem; font-weight: 400; }
+  .footer-col p, .footer-col a { display: block; line-height: 2; }
+  .footer-col a:hover { color: var(--terra); }
+  .footer-bottom { padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Lumen<i>·</i>Wellness</div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#membership">Membership</a>
+      <a href="#team">Team</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a href="#book" class="nav-cta">Book a visit</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="badge">✿ Now welcoming founding members</div>
+      <h1>Skin, body, and breath. <i>Under one roof.</i></h1>
+      <p class="hero-sub">A modern wellness studio in Scottsdale where your aesthetician, massage therapist, and IV nurse all sit at the same table — and actually talk to each other.</p>
+      <div class="hero-cta">
+        <a href="#book" class="btn btn-terra">Book a visit <span class="arrow">→</span></a>
+        <a href="#membership" class="btn btn-line">Explore membership</a>
+      </div>
+    </div>
+    <div class="hero-collage">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="eyebrow">Four Pillars</div>
+    <h2 class="section-title">Wellness that respects your time, <i>and your nervous system.</i></h2>
+    <p class="section-sub">Most studios make you bounce between five providers and four parking lots. We bring it all into one space, one schedule, one care plan.</p>
+
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-glyph">A</div>
+        <div class="cat-name">Aesthetics</div>
+        <ul class="cat-list">
+          <li>Botox & filler</li>
+          <li>Microneedling</li>
+          <li>Hydrafacial</li>
+          <li>LED therapy</li>
+          <li>Chemical peels</li>
+        </ul>
+      </div>
+      <div class="cat-card">
+        <div class="cat-glyph">B</div>
+        <div class="cat-name">Bodywork</div>
+        <ul class="cat-list">
+          <li>Deep tissue</li>
+          <li>Lymphatic drainage</li>
+          <li>Cupping</li>
+          <li>Pre-natal massage</li>
+          <li>Hot stone</li>
+        </ul>
+      </div>
+      <div class="cat-card">
+        <div class="cat-glyph">C</div>
+        <div class="cat-name">IV & Vitamin</div>
+        <ul class="cat-list">
+          <li>Myers' cocktail</li>
+          <li>Glutathione drips</li>
+          <li>NAD+ therapy</li>
+          <li>B12 / B-complex</li>
+          <li>Recovery blends</li>
+        </ul>
+      </div>
+      <div class="cat-card">
+        <div class="cat-glyph">D</div>
+        <div class="cat-name">Breath & Sound</div>
+        <ul class="cat-list">
+          <li>Breathwork (1:1)</li>
+          <li>Sound bath</li>
+          <li>Cold plunge</li>
+          <li>Infrared sauna</li>
+          <li>Meditation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="membership">
+  <div class="container">
+    <div class="membership">
+      <div>
+        <div class="eyebrow">The Lumen Membership</div>
+        <h2>One pass. Every service. <i>Every month.</i></h2>
+        <p>Members get a flat monthly rate, priority booking, 20% off everything else, and a quarterly check-in to plan the next 90 days of your wellness routine.</p>
+        <p>Pause anytime. Cancel anytime. No 12-month contracts, no auto-renewal traps.</p>
+      </div>
+      <div class="member-perks">
+        <div class="member-tier">Founding Member</div>
+        <div class="member-price">$285<small>/ month</small></div>
+        <div class="member-tagline">Locked rate for life of membership</div>
+        <ul class="member-list">
+          <li>One service per month — choose any pillar</li>
+          <li>Roll over up to 3 unused months</li>
+          <li>20% off all additional treatments</li>
+          <li>Free guest pass quarterly</li>
+          <li>Member-only events & retreats</li>
+          <li>Quarterly 30-min planning session</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="container">
+    <div class="eyebrow">The Practitioners</div>
+    <h2 class="section-title">A small team. <i>Long-tenured.</i></h2>
+    <p class="section-sub">Everyone on this wall has been doing this work for at least a decade. We hire slowly and keep our people for a reason.</p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-img team-img-1"></div>
+        <div class="team-info">
+          <div class="team-role">Founder · Lead Aesthetician</div>
+          <div class="team-name">Anaya Brooks</div>
+          <p class="team-bio">12 years in clinical aesthetics. Trained in Paris, certified in PRP and microneedling. Believes great skin is 80% boring routine.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img team-img-2"></div>
+        <div class="team-info">
+          <div class="team-role">Senior Bodywork Therapist</div>
+          <div class="team-name">Marisol Ruiz</div>
+          <p class="team-bio">LMT for 15 years, specializing in lymphatic drainage and post-surgical recovery. Trained at the Vodder Academy in Austria.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-img team-img-3"></div>
+        <div class="team-info">
+          <div class="team-role">RN · IV & Vitamin Specialist</div>
+          <div class="team-name">Hana Okafor</div>
+          <p class="team-bio">Registered nurse, 9 years in functional medicine. Designs custom infusion protocols based on lab work, not vibes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <blockquote>"It's the only place in Scottsdale where I leave feeling more grounded than when I arrived. That's a low bar that almost nobody clears."</blockquote>
+  <cite>— Member since 2024</cite>
+</section>
+
+<section id="book" class="final-cta">
+  <div class="container">
+    <h2 class="section-title" style="margin-left: auto; margin-right: auto;">Come see the space. <i>It's worth the drive.</i></h2>
+    <p>Book a complimentary 30-minute studio tour, or jump straight to your first treatment. Either way, no pressure.</p>
+    <div class="hero-cta">
+      <a href="#" class="btn btn-terra">Book a visit <span class="arrow">→</span></a>
+      <a href="#" class="btn btn-line">Tour the studio first</a>
+    </div>
+  </div>
+</section>
+
+<footer id="visit">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom: 1rem;">Lumen<i>·</i>Wellness</div>
+        <p>Skin, body, and breath. Under one roof.<br/>Scottsdale, AZ.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <p>7141 E Stetson Drive<br/>Suite 110<br/>Scottsdale, AZ 85251</p>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <p>Mon – Sat · 8–8<br/>Sun · 9–5</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+14805550100">(480) 555-0100</a>
+        <a href="mailto:hello@lumenwellness.example">hello@lumen.example</a>
+        <a href="#">@lumen.scottsdale</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Lumen Wellness Studio</div>
+      <div><a href="../../">↗ Designed by Karahan Studio</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

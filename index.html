@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Karahan Studio — Premium Websites for Med-Spas</title>
+<meta name="description" content="Designed in Germany. Built for US aesthetic practices. $5,000 fixed price. Live in 14 days." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0d0d0f;
+    --bg-2: #15151a;
+    --surface: #1a1a20;
+    --border: #28282f;
+    --text: #ececef;
+    --text-2: #a8a8b0;
+    --text-3: #6e6e78;
+    --gold: #d4af7a;
+    --gold-2: #e8c896;
+    --accent-soft: rgba(212, 175, 122, 0.12);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  .serif { font-family: 'Fraunces', Georgia, serif; font-weight: 400; letter-spacing: -0.02em; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(13, 13, 15, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+  .logo { font-family: 'Fraunces', serif; font-size: 18px; letter-spacing: -0.01em; }
+  .logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; font-size: 14px; color: var(--text-2); }
+  .nav-links a { color: inherit; text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--text); }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+
+  /* Hero */
+  .hero {
+    padding: 6rem 0 5rem;
+    background:
+      radial-gradient(800px 400px at 80% -10%, rgba(212, 175, 122, 0.08), transparent 60%),
+      radial-gradient(600px 300px at -10% 20%, rgba(212, 175, 122, 0.05), transparent 60%);
+  }
+  .eyebrow {
+    color: var(--gold); font-size: 12px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1.5rem;
+  }
+  h1.hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 6.5vw, 76px);
+    line-height: 1.05; font-weight: 400;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+  }
+  h1.hero-title em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 19px);
+    color: var(--text-2); max-width: 620px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 26px; border-radius: 999px;
+    font-size: 14px; font-weight: 500; letter-spacing: 0.01em;
+    text-decoration: none; transition: all 0.2s;
+    cursor: pointer; border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--gold); color: #1a1208; }
+  .btn-primary:hover { background: var(--gold-2); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--text); border-color: var(--border); }
+  .btn-ghost:hover { border-color: var(--text-2); }
+  .arrow { transition: transform 0.2s; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* Hero stats */
+  .hero-stats {
+    margin-top: 4rem; display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2rem; padding-top: 2.5rem; border-top: 1px solid var(--border);
+  }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 36px; color: var(--gold); }
+  .stat-lbl { font-size: 12px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+  @media (max-width: 720px) { .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
+
+  /* Section */
+  section { padding: 5rem 0; border-top: 1px solid var(--border); }
+  .section-eyebrow { color: var(--gold); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1rem; }
+  .section-title { font-family: 'Fraunces', serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem; max-width: 720px; }
+  .section-sub { color: var(--text-2); font-size: 17px; max-width: 600px; margin-bottom: 3rem; }
+
+  /* Work grid */
+  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  @media (max-width: 900px) { .work-grid { grid-template-columns: 1fr; } }
+  .work-card {
+    background: var(--bg-2); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    text-decoration: none; color: inherit;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    display: flex; flex-direction: column;
+  }
+  .work-card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+  .work-thumb { aspect-ratio: 4 / 3; overflow: hidden; position: relative; }
+  .work-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+  .work-card:hover .work-thumb img { transform: scale(1.05); }
+  .work-meta { padding: 1.25rem 1.5rem 1.5rem; }
+  .work-tag { font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+  .work-name { font-family: 'Fraunces', serif; font-size: 22px; margin-bottom: 0.25rem; }
+  .work-desc { color: var(--text-2); font-size: 14px; }
+
+  /* Process */
+  .process-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  @media (max-width: 900px) { .process-list { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; } }
+  @media (max-width: 520px) { .process-list { grid-template-columns: 1fr; } }
+  .process-item { padding: 1.5rem; background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; }
+  .process-num { font-family: 'Fraunces', serif; color: var(--gold); font-size: 14px; margin-bottom: 1rem; letter-spacing: 0.1em; }
+  .process-title { font-family: 'Fraunces', serif; font-size: 20px; margin-bottom: 0.5rem; }
+  .process-desc { color: var(--text-2); font-size: 14px; line-height: 1.6; }
+
+  /* Pricing */
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; } }
+  .price-card {
+    padding: 2rem; background: var(--bg-2); border: 1px solid var(--border);
+    border-radius: 14px; display: flex; flex-direction: column;
+    position: relative;
+  }
+  .price-card.featured { border-color: var(--gold); background: linear-gradient(180deg, rgba(212,175,122,0.05) 0%, var(--bg-2) 100%); }
+  .price-card.featured::before {
+    content: 'Most popular'; position: absolute; top: -12px; left: 2rem;
+    background: var(--gold); color: #1a1208; padding: 4px 12px;
+    border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.05em;
+  }
+  .price-tier { font-size: 13px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1rem; }
+  .price-amt { font-family: 'Fraunces', serif; font-size: 44px; line-height: 1; margin-bottom: 0.25rem; }
+  .price-amt small { font-size: 16px; color: var(--text-3); margin-left: 4px; }
+  .price-time { font-size: 13px; color: var(--text-3); margin-bottom: 1.75rem; }
+  .price-features { list-style: none; flex: 1; margin-bottom: 1.75rem; }
+  .price-features li { padding: 8px 0; font-size: 14px; color: var(--text-2); border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 10px; }
+  .price-features li::before { content: '—'; color: var(--gold); flex-shrink: 0; }
+  .price-features li:last-child { border-bottom: none; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
+  .about-text { color: var(--text-2); font-size: 16px; line-height: 1.8; }
+  .about-text p + p { margin-top: 1rem; }
+  .about-img {
+    aspect-ratio: 4/5; border-radius: 14px;
+    background:
+      linear-gradient(135deg, rgba(212,175,122,0.1) 0%, transparent 50%),
+      var(--bg-2);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; color: var(--gold);
+    font-size: 80px;
+  }
+
+  /* CTA section */
+  .cta-section {
+    padding: 6rem 0;
+    background:
+      radial-gradient(700px 350px at 50% 50%, rgba(212,175,122,0.1), transparent 70%);
+    text-align: center;
+  }
+  .cta-title { font-family: 'Fraunces', serif; font-size: clamp(36px, 5vw, 56px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1rem; }
+  .cta-sub { color: var(--text-2); font-size: 17px; margin-bottom: 2.5rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+
+  /* Footer */
+  footer { padding: 3rem 0; border-top: 1px solid var(--border); color: var(--text-3); font-size: 13px; }
+  .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  footer a { color: var(--text-2); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
+  .faq-item summary { cursor: pointer; font-family: 'Fraunces', serif; font-size: 19px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary::after { content: '+'; color: var(--gold); font-size: 24px; transition: transform 0.2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-answer { color: var(--text-2); font-size: 15px; line-height: 1.7; padding-top: 1rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">karahan<span>·</span>studio</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Premium Websites for Aesthetic Practices</div>
+    <h1 class="hero-title">Your patients see your website <em>before</em> they see you.</h1>
+    <p class="hero-sub">Designed in Germany. Built for US med-spas, aesthetic clinics, and high-end wellness brands. Fixed price, two weeks, no agency overhead.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Book a 20-min call <span class="arrow">→</span></a>
+      <a href="#work" class="btn btn-ghost">See recent work</a>
+    </div>
+
+    <div class="hero-stats">
+      <div><div class="stat-num">14</div><div class="stat-lbl">Days to launch</div></div>
+      <div><div class="stat-num">$5k</div><div class="stat-lbl">Fixed price, no surprises</div></div>
+      <div><div class="stat-num">1</div><div class="stat-lbl">Designer + developer</div></div>
+      <div><div class="stat-num">3x</div><div class="stat-lbl">Avg booking lift</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="container">
+    <div class="section-eyebrow">Selected Work</div>
+    <h2 class="section-title">Three brands, three voices, one standard of craft.</h2>
+    <p class="section-sub">Each site is custom designed around the practice — never a template. Built lean, loads fast, looks like it costs more than it does.</p>
+
+    <div class="work-grid">
+      <a href="work/glowmed/" class="work-card">
+        <div class="work-thumb"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80" alt="GlowMed Aesthetics" loading="lazy" /></div>
+        <div class="work-meta">
+          <div class="work-tag">Luxury · Med-Spa</div>
+          <div class="work-name">GlowMed Aesthetics</div>
+          <div class="work-desc">Editorial-grade brand for a high-end injectables and laser clinic.</div>
+        </div>
+      </a>
+      <a href="work/radiance/" class="work-card">
+        <div class="work-thumb"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80" alt="Radiance Aesthetics" loading="lazy" /></div>
+        <div class="work-meta">
+          <div class="work-tag">Clinical · Aesthetic Medicine</div>
+          <div class="work-name">Radiance Aesthetics</div>
+          <div class="work-desc">A modern, transparent identity for a board-certified PA-led practice.</div>
+        </div>
+      </a>
+      <a href="work/lumen/" class="work-card">
+        <div class="work-thumb"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" alt="Lumen Wellness" loading="lazy" /></div>
+        <div class="work-meta">
+          <div class="work-tag">Wellness · Holistic</div>
+          <div class="work-name">Lumen Wellness Studio</div>
+          <div class="work-desc">A warm, membership-led wellness brand with full booking funnel.</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <div class="section-eyebrow">The Process</div>
+    <h2 class="section-title">Two weeks. Four phases. No drift.</h2>
+    <p class="section-sub">Most agencies take 8–12 weeks because they have to. I don't. One designer, one developer, one decision-maker on your side.</p>
+
+    <div class="process-list">
+      <div class="process-item">
+        <div class="process-num">DAY 1</div>
+        <div class="process-title">Discovery</div>
+        <div class="process-desc">A 30-minute call. We map your services, ideal patient, brand voice, and what you want booked more of.</div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">DAY 2–4</div>
+        <div class="process-title">Design</div>
+        <div class="process-desc">A full design draft for your homepage and one service page. One revision round, locked Friday.</div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">DAY 5–11</div>
+        <div class="process-title">Build</div>
+        <div class="process-desc">Hand-coded, lightning fast, mobile-first. Booking integration, contact forms, and analytics wired up.</div>
+      </div>
+      <div class="process-item">
+        <div class="process-num">DAY 12–14</div>
+        <div class="process-title">Launch</div>
+        <div class="process-desc">Domain handover, training video for your front desk, and 30 days of post-launch tweaks included.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <div class="section-eyebrow">Pricing</div>
+    <h2 class="section-title">Fixed price. No surprises. No retainers.</h2>
+    <p class="section-sub">One invoice, paid 50% to start, 50% on launch. The price you see is the price you pay.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Standard</div>
+        <div class="price-amt">$5,000</div>
+        <div class="price-time">14 days · 5 pages</div>
+        <ul class="price-features">
+          <li>Custom-designed homepage</li>
+          <li>Up to 4 service / about pages</li>
+          <li>Booking integration (Vagaro, Boulevard, Mindbody)</li>
+          <li>Mobile-first, 90+ Lighthouse score</li>
+          <li>Basic on-page SEO</li>
+          <li>30 days post-launch support</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" style="justify-content: center;">Start a project</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">Premium</div>
+        <div class="price-amt">$8,000</div>
+        <div class="price-time">21 days · 8 pages</div>
+        <ul class="price-features">
+          <li>Everything in Standard</li>
+          <li>On-site brand photography direction</li>
+          <li>Before / after gallery system</li>
+          <li>Treatment-specific landing pages</li>
+          <li>Custom intake form + CRM hookup</li>
+          <li>60 days post-launch support</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" style="justify-content: center;">Start a project</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Custom</div>
+        <div class="price-amt">$12k+<small>quote</small></div>
+        <div class="price-time">For multi-location practices</div>
+        <ul class="price-features">
+          <li>Everything in Premium</li>
+          <li>Multi-location architecture</li>
+          <li>Provider profiles + scheduling</li>
+          <li>Advanced SEO + content strategy</li>
+          <li>HIPAA-conscious form handling</li>
+          <li>Quarterly design refreshes</li>
+        </ul>
+        <a href="#contact" class="btn btn-ghost" style="justify-content: center;">Request a quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-eyebrow">About</div>
+        <h2 class="section-title">A studio of one. By design.</h2>
+        <div class="about-text">
+          <p>I'm Justin Karahan. I run Karahan Studio out of Bielefeld, Germany — a small city with a long tradition of careful work.</p>
+          <p>I work with med-spa and aesthetic clinic owners who are tired of agency proposals stacked with retainers, change orders, and project managers who never touch the design.</p>
+          <p>One person designs your site. The same person builds it. The same person picks up the phone in week eight when you want to add a new service. That's the entire pitch.</p>
+        </div>
+      </div>
+      <div class="about-img">JK</div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-eyebrow">Questions</div>
+    <h2 class="section-title">The ones I get most.</h2>
+    <div style="max-width: 760px;">
+      <details class="faq-item" open>
+        <summary>Why so much cheaper than US agencies?</summary>
+        <div class="faq-answer">No project managers, no account executives, no salespeople. Cost of living in Germany is also lower than San Francisco. The work itself isn't cheaper — the overhead is.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do you handle hosting and domains?</summary>
+        <div class="faq-answer">Yes. Sites are deployed to Vercel or Netlify (both included free under your usage). I help you connect your domain and set up email forwarding. No monthly hosting bill from me.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What about HIPAA / patient data?</summary>
+        <div class="faq-answer">For Standard and Premium tiers, all forms route to a HIPAA-compliant provider of your choice (Jotform HIPAA, Boulevard, etc.). The Custom tier includes signed BAAs and HIPAA-conscious infrastructure.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can you write the copy?</summary>
+        <div class="faq-answer">Yes — for the homepage and one service page, included. For full copy across treatment pages, add $1,500. Most owners prefer to write their own with my outline.</div>
+      </details>
+      <details class="faq-item">
+        <summary>What happens if I want changes after launch?</summary>
+        <div class="faq-answer">Standard includes 30 days of free tweaks (copy edits, image swaps, small layout changes). After that, I bill $150/hr or you can take an optional $400/mo care plan with 4 hours included.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do you do SEO and ads?</summary>
+        <div class="faq-answer">On-page SEO is part of every build. I don't manage ad campaigns — I'll happily refer you to specialists I trust if you need that.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta-section">
+  <div class="container">
+    <h2 class="cta-title">Ready to be the practice <em style="color: var(--gold); font-style: italic;">they Google twice?</em></h2>
+    <p class="cta-sub">A 20-minute call costs nothing. Either I'm a good fit and we book a discovery, or I tell you who is.</p>
+    <a href="mailto:hello@karahanstudio.com?subject=New%20project%20inquiry" class="btn btn-primary">Book a call <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>© 2026 Karahan Studio · Bielefeld, Germany</div>
+      <div><a href="mailto:hello@karahanstudio.com">hello@karahanstudio.com</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
